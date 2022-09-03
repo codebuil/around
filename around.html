@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>catch me.</title>
+		<style>
+			#hello{
+				height:550px;
+				width:600px;
+			}
+			#hworld{
+				position:relative;
+				height:50px;
+				width:160px;
+				top: 0px
+				left: 0px
+			}
+		</style>
+	</head>
+	<body bgColor='green'>
+		<div id="hello" bgColor="green">
+		<div id="hworld" class="worlds" bgColor="green" top="200px" left="200px" >
+		<a href="http://github.com/codebuil">catch me.</a>
+		</div>
+		</div>
+		<script>
+	
+	function f1(){
+			var x=0;
+			var y=1;
+			
+			txts.style.top=(op.jumpi(y)).toString()+"px";
+			txts.style.left=(op.jumpi(x)).toString()+"px";
+			
+	}
+	var txts=document.getElementById("hworld");	
+	var op;
+	
+	
+	fetch("around.wasm") 
+   .then(bytes => bytes.arrayBuffer()) 
+   .then(mod => WebAssembly.compile(mod)) 
+   .then(module => { 
+      let instance = new WebAssembly.Instance(module);
+	op=instance.exports;
+
+
+});
+
+	setInterval(f1,40);
+
+	</script>
+	</body>
+</html>
